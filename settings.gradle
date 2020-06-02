@@ -1,0 +1,2 @@
+rootProject.name='Desafio Mobile2You'
+include ':app'
