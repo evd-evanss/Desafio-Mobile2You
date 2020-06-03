@@ -1,21 +1,14 @@
-package com.sayhitoiot.coronanews.support
+package com.sayhitoiot.desafiomobile2you.support
 
 import android.app.Application
-import com.sayhitoiot.coronanews.commom.realm.RealmDB
-import com.sayhitoiot.coronanews.services.SyncService
+import com.sayhitoiot.desafiomobile2you.service.SyncApi
+
 
 class App: Application() {
 
     override fun onCreate() {
         super.onCreate()
-        configureDataBase()
-        SyncService()
+        SyncApi()
     }
-
-    private fun configureDataBase() {
-        RealmDB.configureRealm(applicationContext)
-    }
-
-
 
 }
