@@ -1,11 +1,10 @@
-package com.sayhitoiot.coronanews.commom.apicovid.repository
+package com.sayhitoiot.desafiomobile2you.api.repository
 
-import com.sayhitoiot.coronanews.commom.apicovid.OnGetStatisticsByStatesCoronaCallback
-import com.sayhitoiot.coronanews.commom.apicovid.OnGetStatisticsCoronaCallback
+import com.sayhitoiot.desafiomobile2you.api.OnGetMoviesDetailsCallback
+
 
 interface InteractToApi {
 
-    fun getStatistics(callbackStatistics: OnGetStatisticsCoronaCallback)
-    fun getStatisticsByStates(callbackStatisticsByStatesCoronaCallback: OnGetStatisticsByStatesCoronaCallback)
+    fun getMoviesDetails(callbackMoviesDetails: OnGetMoviesDetailsCallback)
 
 }
