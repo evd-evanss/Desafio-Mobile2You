@@ -1,4 +1,4 @@
-package com.sayhitoiot.desafiomobile2you.api.model
+package com.sayhitoiot.desafiomobile2you.api.model.movie
 
 data class Movie(
     val adult: Boolean,
@@ -12,8 +12,8 @@ data class Movie(
     val original_language: String,
     val original_title: String,
     val overview: String,
-    val popularity: Double,
-    val poster_path: String,
+    var popularity: Double,
+    var poster_path: String,
     val production_companies: List<ProductionCompany>,
     val production_countries: List<ProductionCountry>,
     val release_date: String,
@@ -25,5 +25,5 @@ data class Movie(
     val title: String,
     val video: Boolean,
     val vote_average: Double,
-    val vote_count: Int
+    var vote_count: Int
 )

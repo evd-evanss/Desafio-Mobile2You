@@ -1,4 +1,4 @@
-package com.sayhitoiot.desafiomobile2you.api.model
+package com.sayhitoiot.desafiomobile2you.api.model.movie
 
 data class ProductionCompany(
     val id: Int,
