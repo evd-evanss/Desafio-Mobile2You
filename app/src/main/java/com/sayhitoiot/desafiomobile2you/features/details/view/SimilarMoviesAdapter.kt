@@ -1,9 +1,13 @@
 package com.sayhitoiot.desafiomobile2you.features.details.view
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.view.animation.AnticipateOvershootInterpolator
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.LayoutRes
@@ -15,11 +19,14 @@ import com.sayhitoiot.desafiomobile2you.utils.ToGenres
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_movies.view.*
 
-class SimilarMoviesAdapter(var similarMoviesList: MutableList<SimilarMovie>):
+class SimilarMoviesAdapter(var context: Context, var similarMoviesList: MutableList<SimilarMovie>):
     RecyclerView.Adapter<SimilarMoviesAdapter.ViewHolder>(){
 
     companion object{
         const val TAG = "similar-adapter"
+        const val H = 200f
+        const val ALPHA = 0.3f
+        const val DURATION = 1000L
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -38,14 +45,20 @@ class SimilarMoviesAdapter(var similarMoviesList: MutableList<SimilarMovie>):
         notifyDataSetChanged()
     }
 
+    override fun onViewRecycled(holder: ViewHolder) {
+        super.onViewRecycled(holder)
+
+    }
+
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
         private var textTitle: TextView = itemView.itemMovies_textView_title
         private var textSubTitle: TextView = itemView.itemMovies_textView_subtitle
         private var imagePoster: ImageView = itemView.itemMovies_imageView_poster
+        private val enterInterpolator = AnticipateOvershootInterpolator(5f)
 
         fun bind(similarMovie: MutableList<SimilarMovie>, position: Int){
-
+            setAnimation(itemView)
             Log.d("adapter", "title: ${similarMovie[position].title} url: ${similarMovie[position].id}")
             textTitle.text = similarMovie[position].title
             textSubTitle.text = getGenre(similarMovie[position])
@@ -68,6 +81,13 @@ class SimilarMoviesAdapter(var similarMoviesList: MutableList<SimilarMovie>):
                 genres += "${ToGenres.invoke(it)}, "
             }
             return "$year ${genres.subSequence(0, genres.count() - 2)}"
+        }
+
+        private fun setAnimation(child: View) {
+            child.translationY = if(adapterPosition == 0) -H else H
+            child.alpha = ALPHA
+            child.animate().translationY(0f).alpha(1f)
+                .setInterpolator(enterInterpolator).duration = DURATION
         }
 
     }

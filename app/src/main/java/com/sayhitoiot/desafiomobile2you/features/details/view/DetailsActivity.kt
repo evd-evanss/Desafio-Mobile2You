@@ -28,7 +28,7 @@ class DetailsActivity : AppCompatActivity(),
         DetailsPresenter(this)
     }
     private val adapter: SimilarMoviesAdapter by lazy {
-        SimilarMoviesAdapter(mutableListOf())
+        SimilarMoviesAdapter(this, mutableListOf())
     }
 
     override val context: Context get() = this
@@ -100,7 +100,7 @@ class DetailsActivity : AppCompatActivity(),
         imageError?.visibility = GONE
         textError?.visibility = GONE
         buttonUpdate?.visibility = GONE
-        recyclerView?.setItemViewCacheSize(similarMovies.size)
+        recyclerView?.setItemViewCacheSize(4)
         recyclerView?.visibility = VISIBLE
         adapter.updateList(similarMovies)
     }
