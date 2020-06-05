@@ -11,9 +11,12 @@ import com.sayhitoiot.desafiomobile2you.api.repository.ApiDataManager
 import com.sayhitoiot.desafiomobile2you.api.repository.InteractToApi
 import com.sayhitoiot.desafiomobile2you.api.model.similar.SimilarMovie
 import com.sayhitoiot.desafiomobile2you.api.model.similar.SimilarMovies
+import com.sayhitoiot.desafiomobile2you.features.details.interact.contract.DetailsInteractToPresenter
+import com.sayhitoiot.desafiomobile2you.features.details.interact.contract.DetailsPresenterToInteract
 import com.sayhitoiot.desafiomobile2you.utils.createImagePath
 
-class DetailsInteract(private val presenter: DetailsPresenterToInteract) : DetailsInteractToPresenter {
+class DetailsInteract(private val presenter: DetailsPresenterToInteract) :
+    DetailsInteractToPresenter {
 
     private val repository: InteractToApi = ApiDataManager()
     private val likeStorage = LikesStorage(presenter.context)
@@ -38,12 +41,9 @@ class DetailsInteract(private val presenter: DetailsPresenterToInteract) : Detai
                 moviesStorage.views = movie.popularity.toFloat()
                 moviesStorage.poster = movie.poster_path.createImagePath()
 
-                presenter.didFinishFetchMovieOnAPI(
-                        MovieEntity(
-                        likes = moviesStorage.likes,
-                        views = moviesStorage.views,
-                        poster = movie.poster_path.createImagePath() )
-                )
+                MovieEntity(likes = moviesStorage.likes, views = moviesStorage.views, poster = movie.poster_path.createImagePath())
+                    .also { presenter.didFinishFetchMovieOnAPI(it) }
+
                 fetchSimilarMovies()
             }
 
@@ -63,7 +63,14 @@ class DetailsInteract(private val presenter: DetailsPresenterToInteract) : Detai
                 similarMovies.results.forEach {
                     similarMoviesList.add(it)
                 }
-                getMovie()?.let { presenter.didFinishFetchSimilarMoviesOnAPI(it, similarMoviesList) }
+
+                val movie = getMovie()
+
+                if(movie != null) {
+                    presenter.didFinishFetchSimilarMoviesOnAPI(movie, similarMoviesList)
+                } else {
+                    presenter.didFinishFetchMovieOnAPIWithError()
+                }
             }
 
             override fun onError() {
@@ -100,7 +107,7 @@ class DetailsInteract(private val presenter: DetailsPresenterToInteract) : Detai
                 moviesStorage.likes --
             }
         }
-        presenter.requestUpdateLikes(moviesStorage.likes)
+        presenter.requestUpdateLikesOnView(moviesStorage.likes)
     }
 
 }

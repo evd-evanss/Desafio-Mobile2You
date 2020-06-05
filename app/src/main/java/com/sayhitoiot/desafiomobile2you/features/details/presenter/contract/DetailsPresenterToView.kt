@@ -1,4 +1,4 @@
-package com.sayhitoiot.desafiomobile2you.features.details.presenter
+package com.sayhitoiot.desafiomobile2you.features.details.presenter.contract
 
 interface DetailsPresenterToView {
     fun onCreate()
