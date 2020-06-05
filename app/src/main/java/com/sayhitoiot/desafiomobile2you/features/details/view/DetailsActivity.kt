@@ -39,6 +39,7 @@ class DetailsActivity : AppCompatActivity(),
     private var textViews: TextView? = null
     private var textError: TextView? = null
     private var imageError: ImageView? = null
+    private var imageBack: ImageView? = null
     private var buttonUpdate: MaterialButton? = null
     private var appBar: AppBarLayout? = null
 
@@ -61,6 +62,8 @@ class DetailsActivity : AppCompatActivity(),
         imageMovie = detailsActivity_imageView_background
         imageLike = detailsActivity_imageView_likes
         imageLike?.setOnClickListener { presenter.imageLikeTapped() }
+        imageBack = detailsActivity_imageView_back
+        imageBack?.setOnClickListener { onBackPressed() }
         textLikes = detailsActivity_textView_likes
         textViews = detailsActivity_textView_popularity
         textError = detailsActivity_textView_error
