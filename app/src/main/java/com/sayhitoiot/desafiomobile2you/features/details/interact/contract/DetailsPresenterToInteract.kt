@@ -1,4 +1,4 @@
-package com.sayhitoiot.desafiomobile2you.features.details.interact
+package com.sayhitoiot.desafiomobile2you.features.details.interact.contract
 
 import android.content.Context
 import com.sayhitoiot.desafiomobile2you.storage.entity.MovieEntity

@@ -1,4 +1,4 @@
-package com.sayhitoiot.desafiomobile2you.features.details.interact
+package com.sayhitoiot.desafiomobile2you.features.details.interact.contract
 
 interface DetailsInteractToPresenter {
     fun fetchData()

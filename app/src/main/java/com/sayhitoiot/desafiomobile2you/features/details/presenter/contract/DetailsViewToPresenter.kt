@@ -1,4 +1,4 @@
-package com.sayhitoiot.desafiomobile2you.features.details.presenter
+package com.sayhitoiot.desafiomobile2you.features.details.presenter.contract
 
 import android.content.Context
 import com.sayhitoiot.desafiomobile2you.api.model.similar.SimilarMovie

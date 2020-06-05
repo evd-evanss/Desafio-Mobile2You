@@ -16,12 +16,13 @@ import com.google.android.material.button.MaterialButton
 import com.sayhitoiot.desafiomobile2you.R
 import com.sayhitoiot.desafiomobile2you.api.model.similar.SimilarMovie
 import com.sayhitoiot.desafiomobile2you.features.details.presenter.DetailsPresenter
-import com.sayhitoiot.desafiomobile2you.features.details.presenter.DetailsPresenterToView
-import com.sayhitoiot.desafiomobile2you.features.details.presenter.DetailsViewToPresenter
+import com.sayhitoiot.desafiomobile2you.features.details.presenter.contract.DetailsPresenterToView
+import com.sayhitoiot.desafiomobile2you.features.details.presenter.contract.DetailsViewToPresenter
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.details_activity.*
 
-class DetailsActivity : AppCompatActivity(), DetailsViewToPresenter {
+class DetailsActivity : AppCompatActivity(),
+    DetailsViewToPresenter {
 
     private val presenter: DetailsPresenterToView by lazy {
         DetailsPresenter(this)

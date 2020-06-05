@@ -4,8 +4,10 @@ import android.content.Context
 import com.sayhitoiot.desafiomobile2you.storage.entity.MovieEntity
 import com.sayhitoiot.desafiomobile2you.api.model.similar.SimilarMovie
 import com.sayhitoiot.desafiomobile2you.features.details.interact.DetailsInteract
-import com.sayhitoiot.desafiomobile2you.features.details.interact.DetailsInteractToPresenter
-import com.sayhitoiot.desafiomobile2you.features.details.interact.DetailsPresenterToInteract
+import com.sayhitoiot.desafiomobile2you.features.details.interact.contract.DetailsInteractToPresenter
+import com.sayhitoiot.desafiomobile2you.features.details.interact.contract.DetailsPresenterToInteract
+import com.sayhitoiot.desafiomobile2you.features.details.presenter.contract.DetailsPresenterToView
+import com.sayhitoiot.desafiomobile2you.features.details.presenter.contract.DetailsViewToPresenter
 
 class DetailsPresenter(private val view: DetailsViewToPresenter) : DetailsPresenterToView,
     DetailsPresenterToInteract {
