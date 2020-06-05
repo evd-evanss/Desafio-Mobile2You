@@ -104,7 +104,6 @@ class DetailsActivity : AppCompatActivity(),
 
     override fun renderImageLikeFill() {
         imageLike?.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_favorite_white_24dp))
-
     }
 
     override fun renderImageLikeDefault() {
