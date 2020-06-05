@@ -172,6 +172,18 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+    <ImageView
+        android:id="@+id/detailsActivity_imageView_error"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="100dp"
+        android:contentDescription="@string/error"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_signal_cellular_connected_no_internet_0_bar_black_24dp" />
+
     <TextView
         android:id="@+id/detailsActivity_textView_error"
         android:layout_width="0dp"
@@ -202,18 +214,6 @@
         app:layout_constraintStart_toStartOf="@+id/detailsActivity_textView_error"
         app:layout_constraintTop_toBottomOf="@+id/detailsActivity_textView_error"
         app:layout_constraintVertical_bias="0.19" />
-
-    <ImageView
-        android:id="@+id/detailsActivity_imageView_error"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="100dp"
-        android:contentDescription="@string/error"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_signal_cellular_connected_no_internet_0_bar_black_24dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
