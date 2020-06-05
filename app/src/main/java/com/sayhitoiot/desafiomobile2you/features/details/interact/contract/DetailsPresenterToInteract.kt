@@ -15,5 +15,5 @@ interface DetailsPresenterToInteract {
     fun didFinishHandleLike(like: Boolean)
     fun didFetchLikeOnStorage(like: Boolean)
     fun didFinishFetchMovieOnAPIWithError()
-    fun requestUpdateLikes(likes: Int)
+    fun requestUpdateLikesOnView(likes: Int)
 }

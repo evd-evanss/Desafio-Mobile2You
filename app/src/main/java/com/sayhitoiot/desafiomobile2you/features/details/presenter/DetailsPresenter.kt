@@ -31,7 +31,7 @@ class DetailsPresenter(private val view: DetailsViewToPresenter) : DetailsPresen
         interact.handleLike()
     }
 
-    override fun requestUpdateLikes(likes: Int) {
+    override fun requestUpdateLikesOnView(likes: Int) {
         view.updateLikes("$likes")
     }
 

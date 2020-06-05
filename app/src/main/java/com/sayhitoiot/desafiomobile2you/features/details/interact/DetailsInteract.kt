@@ -41,12 +41,9 @@ class DetailsInteract(private val presenter: DetailsPresenterToInteract) :
                 moviesStorage.views = movie.popularity.toFloat()
                 moviesStorage.poster = movie.poster_path.createImagePath()
 
-                presenter.didFinishFetchMovieOnAPI(
-                        MovieEntity(
-                        likes = moviesStorage.likes,
-                        views = moviesStorage.views,
-                        poster = movie.poster_path.createImagePath() )
-                )
+                MovieEntity(likes = moviesStorage.likes, views = moviesStorage.views, poster = movie.poster_path.createImagePath())
+                    .also { presenter.didFinishFetchMovieOnAPI(it) }
+
                 fetchSimilarMovies()
             }
 
@@ -66,7 +63,14 @@ class DetailsInteract(private val presenter: DetailsPresenterToInteract) :
                 similarMovies.results.forEach {
                     similarMoviesList.add(it)
                 }
-                getMovie()?.let { presenter.didFinishFetchSimilarMoviesOnAPI(it, similarMoviesList) }
+
+                val movie = getMovie()
+
+                if(movie != null) {
+                    presenter.didFinishFetchSimilarMoviesOnAPI(movie, similarMoviesList)
+                } else {
+                    presenter.didFinishFetchMovieOnAPIWithError()
+                }
             }
 
             override fun onError() {
@@ -103,7 +107,7 @@ class DetailsInteract(private val presenter: DetailsPresenterToInteract) :
                 moviesStorage.likes --
             }
         }
-        presenter.requestUpdateLikes(moviesStorage.likes)
+        presenter.requestUpdateLikesOnView(moviesStorage.likes)
     }
 
 }
